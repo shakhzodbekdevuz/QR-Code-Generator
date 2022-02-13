@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>QR code scaner</title>
+        <link rel="stylesheet" href="./style.css" class=""/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="mainbox">
+        <div id="main">
+            <div id="box1">
+                <div id="input">
+                    <input type="text" name="" id="data" placeholder="Enter your text !"/>
+                    <div id="msg">Hit enter to generate QR code</div>
+                </div>
+                <div id="output">
+                    <!-- <img src="./qr-kod.png" alt=""> -->
+                </div>
+            </div>
+        </div>
+        </div>
+        <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+        <script type="text/javascript">
+            var qrcode = new QRCode("output");
+            function makeCode() {
+                var input = document.getElementById("data");
+                qrcode.makeCode(input.value);
+            }
+            $("#data").on("blur", function () {
+                makeCode();
+            }).on("keydown", function (e) {
+                if (e.keyCode == 13) {
+                    makeCode();
+                }
+            });
+        </script>
+    </body>
+</html>
